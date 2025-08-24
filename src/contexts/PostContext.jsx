@@ -9,6 +9,11 @@ function PostProvider(props) {
         id:1,
         title:"Hello World",
         content: "Welcome to my new blog."
+    },
+    {
+        id:2,
+        title:"Second Post",
+        content: "Sample content written here."
     }
 ]);
 

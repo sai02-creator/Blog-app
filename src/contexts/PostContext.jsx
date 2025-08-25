@@ -17,8 +17,14 @@ function PostProvider(props) {
     }
 ]);
 
+function addPost (newPost) {
+    const lastId = posts[posts.length - 1].id;
+    setPosts((prev) => [...prev, {...newPost, id: lastId + 1}]);
 
-    return <PostContext.Provider value={{ posts, setPosts }}> {props.children} </PostContext.Provider>
+}
+
+
+    return <PostContext.Provider value={{ posts, addPost }}> {props.children} </PostContext.Provider>
 }
 
 export default PostProvider;

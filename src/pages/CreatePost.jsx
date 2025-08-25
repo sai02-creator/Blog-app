@@ -1,15 +1,20 @@
 import { useForm } from "react-hook-form";
+import { PostContext } from "../contexts/PostContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
-
+    const { addPost } = useContext(PostContext);
     const { register, handleSubmit, formState: { errors },} = useForm ();
-        function onSubmit() {
-        console.log("Form data");
+    const navigate = useNavigate();
+        function onSubmit(data) {
+        addPost(data);
+        navigate("/");
     }
     return (
     <div>
         <h3> Create a New Post </h3>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div>
             <label style={{marginRight: 10 }}> Title </label>
             <input type="text" placeholder="Post title..." {...register("title", {

@@ -16,7 +16,7 @@ function App() {
      <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/create-post' element={<CreatePost/>}/>
-      <Route path='/edit-post:id' element={<EditPost/>}/>
+      <Route path='/edit-post/:id' element={<EditPost/>}/>
      </Routes>
      </PostProvider>
     </div>

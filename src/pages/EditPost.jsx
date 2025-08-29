@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { PostContext } from "../contexts/PostContext";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 
 function EditPost() {
@@ -11,6 +11,8 @@ function EditPost() {
   } = useForm();
 
   const { id } = useParams();
+
+  const navigate = useNavigate()
 
   const { findPostById, updatePost } = useContext(PostContext);
 
@@ -24,6 +26,7 @@ function EditPost() {
 
   function onSubmit(data) {
     updatePost({...data, id: Number(id) })
+    navigate("/");
   
   }
   if (!post) return <p>Post Not Found</p>
